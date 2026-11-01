@@ -1,0 +1,23 @@
+﻿# Lesson 7 English problem data, keyed by problem id fields.
+# 第 7 课的英文题库：按 id 与 l7_*.rpy 文件一一对应，只放 q/opts/hint/why 四个字段，
+# type/ans 以中文文件为准。合并发生在 math_core.rpy 的 init 10（_mb_esc 会一并转义
+# [ ]）。加题时中文文件写完整 dict，这里补同 id 的英文条目；
+# 注意英文串里不要出现裸 %（会被当格式符），要写百分号就用 "percent"。
+init python:
+    L7_EN = [
+        {"id": "L7-01", "q": "(ln(sin x))′ = ?", "opts": ["cos x ÷ sin x", "1 ÷ sin x", "sin x ÷ cos x", "−cos x ÷ sin x"], "hint": "Outer layer: (ln u)′ = 1/u; inner layer: u = sin x, u′ = cos x.", "why": "= cos x/sin x = cot x. The chain rule meshes in a single pass."},
+        {"id": "L7-02", "q": "((x+1) ÷ (x−1))′ = ?", "opts": ["−2 ÷ (x−1)²", "2 ÷ (x−1)²", "x ÷ (x−1)²", "−2 ÷ (x+1)²"], "hint": "Quotient rule: [1·(x−1) − (x+1)·1]/(x−1)², numerator = −2.", "why": "(x−1−x−1)/(x−1)² = −2/(x−1)²."},
+        {"id": "L7-03", "q": "Differentiate: f(x) = sin²x + cos²x (write sin^2(x)+cos^2(x))", "hint": "Do not rush to differentiate! First think about what the expression itself equals.", "why": "sin²x + cos²x ≡ 1, a constant, so its derivative is 0. Brute force also gives 2sinxcosx − 2cosxsinx = 0 — a triumph of trig identities."},
+        {"id": "L7-04", "q": "f(x) = (2x+1)³ (written as (2x+1)^3); find f′(0).", "hint": "f′(x) = 3(2x+1)²·2 = 6(2x+1)².", "why": "f′(0) = 6·1 = 12."},
+        {"id": "L7-05", "q": "f(x) = x·e^x; find f′(0).", "hint": "Product rule: f′ = (x+1)e^x.", "why": "f′(0) = (0+1)e⁰ = 1."},
+        {"id": "L7-06", "q": "The slope of the tangent line to the curve y = √x at x = 1. (Fractions allowed)", "hint": "y′ = 1/(2√x).", "why": "y′(1) = 1/2. The square root function rises ever more slowly."},
+        {"id": "L7-07", "q": "For a differentiable odd function, its derivative must be?", "opts": ["An even function", "An odd function", "A constant", "A function neither odd nor even"], "hint": "Example: what kind of function is the derivative 3x² of the odd function x³? Then the general proof: differentiate both sides of f(−x)=−f(x).", "why": "Differentiate both sides: −f′(−x) equals the derivative of −f(x) → f′(−x) = f′(x), so the derivative is even. Mnemonic: odd differentiates to even, even differentiates to odd."},
+        {"id": "L7-08", "q": "The slope of the tangent line to the curve y = tan x at x = π/4.", "hint": "(tan x)′ = 1/cos²x; cos(π/4) = √2/2.", "why": "1/cos²(π/4) = 1/(1/2) = 2."},
+        {"id": "L7-09", "q": "The curve y = x²·e^x passes through the origin; find the slope of the tangent line at that point.", "hint": "Product rule: f′ = 2x·e^x + x²·e^x, then substitute x = 0.", "why": "f′(0) = 0 + 0 = 0: at the origin the tangent line is the x-axis itself."},
+        {"id": "L7-10", "q": "Which of the following functions has derivative 3x² − 1?", "opts": ["f(x) = x³ − x", "f(x) = x³ − 1", "f(x) = 3x³ − x", "f(x) = x²/2 − x"], "hint": "Differentiation lowers the degree, so the answer should be one degree higher than 3x²−1.", "why": "(x³ − x)′ = 3x² − 1. Checking the other options rules them out."},
+        {"id": "L7-11", "q": "For the implicit function x³ + y³ = 9, the derivative y′ = ?", "opts": ["−x² ÷ y²", "x² ÷ y²", "−y² ÷ x²", "3x² ÷ 3y²"], "hint": "Differentiate with respect to x: 3x² + 3y²·y′ = 0.", "why": "y′ = −3x²/(3y²) = −x²/y²."},
+        {"id": "L7-12", "q": "What is the interval on which f(x) = x² − 2x is monotonically decreasing?", "opts": ["(−∞, 1)", "(1, +∞)", "(0, 2)", "(−∞, 0)"], "hint": "f′ = 2x − 2 < 0; solve this inequality.", "why": "2x−2 < 0 → x < 1. A parabola decreases to the left of its axis of symmetry."},
+        {"id": "L7-13", "q": "f(x) = e^(x+1) (written as e^(x+1)); find f′(0). The answer may use the letter e.", "hint": "The derivative of e^(x+1) is unchanged; substitute x = 0.", "why": "f′(x) = e^(x+1), f′(0) = e. Just enter the letter e."},
+        {"id": "L7-14", "q": "What kind of condition is “f′(x₀) = 0” for “f(x) attains a local extremum at x₀”?", "opts": ["Neither sufficient nor necessary condition", "Sufficient but not necessary condition", "Necessary but not sufficient condition", "Necessary and sufficient condition"], "hint": "Two counterexamples: f(x)=x³ at 0; and must the derivative even exist at an extremum point (think of |x|)?", "why": "For x³ the derivative at 0 is 0 but there is no extremum (not sufficient); |x| has a local minimum at 0 but is not differentiable there (not necessary). Differentiability plus f′ changing sign on the two sides is the reliable test for an extremum."},
+        {"id": "L7-15", "q": "The slope of the tangent line to the curve y = ln(x²) (i.e. 2ln x, x>0) at x = 1.", "hint": "Simplify first: ln(x²) = 2 ln x.", "why": "y = 2ln x → y′ = 2/x → y′(1) = 2. Brute force with the chain rule gives (1/x²)·2x = 2/x as well — different roads, same destination."},
+    ]
