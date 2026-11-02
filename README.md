@@ -82,3 +82,8 @@ galgame-math/
 │   │   ├── story/                 ← 剧情 CG (scg1 ~ scg9) / Story CGs
 │   │   └── memories/              ← 回忆相册照片 (mem1 ~ mem11) / Memory album photos
 │   └── fonts/                     ← 游戏字体文件（包含中文黑体） / Game font files (includes Chinese Sans-serif)
+
+
+
+
+（此项目图片由千问3.8生成，代码+对话是在ai辅助下写出）
