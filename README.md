@@ -7,6 +7,7 @@
 > A visual novel (galgame) combining high school calculus (derivatives) learning with choice-driven romance, built on the **Ren'Py 8.5.3** engine.
 
 ---
+![description](https://github.com/HYZ124/Galgame_Math_-1-_Derivate/blob/main/screenshot1.png）
 
 ## 📖 游戏简介 / Game Introduction
 
