@@ -7,7 +7,9 @@
 > A visual novel (galgame) combining high school calculus (derivatives) learning with choice-driven romance, built on the **Ren'Py 8.5.3** engine.
 
 ---
-![description](https://github.com/HYZ124/Galgame_Math_-1-_Derivate/blob/main/screenshot1.png）
+![游戏主界面](screenshot1.png)
+
+![游戏截图](screenshot2.png)
 
 ## 📖 游戏简介 / Game Introduction
 
@@ -21,7 +23,7 @@ Players will take on the role of a high school student facing college entrance e
 - **Yun Xi**: A classical white-haired girl who mysteriously "possesses" the blackboard and mathematical formulas.
 - **Su Zhiwei**: A rigorous, bespectacled club president and calm, rational math prodigy.
 
-By solving problems, attending classes, and going on after-school dates, you will accumulate experience and affection points. Your choices and quiz performance will determine whether you branch into the **Yun Xi Route**, **President Route**, or **Neutral Route**.
+By solving problems, attending classes, and going on after-school dates, you will accumulate experience and affection points. Your choices and quiz performance will determine whether you branch into the Yun Xi route, the Club President route, or a neutral ending.
 
 ---
 
@@ -39,7 +41,7 @@ This game is developed based on **Ren'Py 8.5.3**. Please download and install th
 
 #### 方式 A：通过 Ren'Py SDK 启动（推荐） / Method A: Launch via Ren'Py SDK (Recommended)
 1. 打开 Ren'Py SDK 启动器。 / Open the Ren'Py SDK launcher.
-2. 点击 **“Preferences” -> “Projects Directory”**，将本项目的根目录 `galgame-math/` 所在的文件夹添加进来。 / Click **"Preferences" -> "Projects Directory"** and add the folder containing the root directory of this project (`galgame-math/`).
+2. 点击 **“Preferences” -> “Projects Directory”**，将本项目的根目录 `galgame-math/` 所在的文件夹添加进来。 / Click **"Preferences" -> "Projects Directory"** and add the folder containing this project's root directory `galgame-math/`.
 3. 在左侧项目列表中选择 **`galgame-math`**，点击 **“Launch Project”（启动项目）** 即可。 / Select **`galgame-math`** from the project list on the left and click **"Launch Project"**.
 
 #### 方式 B：直接启动可执行文件 / Method B: Direct Executable Launch
@@ -78,13 +80,14 @@ galgame-math/
 │   ├── audio/                     ← 音效与 BGM（含 6 首 .ogg 主题音乐） / SFX & BGM (including 6 .ogg theme tracks)
 │   ├── images/                    ← 游戏美术资源 / Game art assets
 │   │   ├── characters/            ← 角色立绘 / Character sprites
-│   │   ├── backgrounds/           ← 场景背景 / Scene backgrounds
-│   │   ├── blackboard/            ← 黑板板书与数学图表 / Blackboard notes & math charts
-│   │   ├── story/                 ← 剧情 CG (scg1 ~ scg9) / Story CGs
-│   │   └── memories/              ← 回忆相册照片 (mem1 ~ mem11) / Memory album photos
+│   │   ├── backgrounds/            ← 场景背景 / Scene backgrounds
+│   │   ├── blackboard/             ← 黑板板书与数学图表 / Blackboard notes & math charts
+│   │   ├── story/                  ← 剧情 CG (scg1 ~ scg9) / Story CGs
+│   │   └── memories/               ← 回忆相册照片 (mem1 ~ mem11) / Memory album photos
 │   └── fonts/                     ← 游戏字体文件（包含中文黑体） / Game font files (includes Chinese Sans-serif)
 
 
 
 
 （此项目图片由千问3.8生成，代码+对话是在ai辅助下写出）
+```
