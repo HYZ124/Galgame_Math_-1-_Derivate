@@ -8,10 +8,8 @@
 
 ---
 ![游戏主界面](screenshot1.png)
-
-![游戏截图](screenshot2.png)
-
-## 📖 游戏简介 / Game Introduction
+---
+##  游戏简介 / Game Introduction
 
 玩家将扮演一名面临高考/期末挑战的高中生，在上完 7 节“导数课”的过程中，与两位性格迥异的女主角展开故事：
 - **云曦**：古风白发少女，神秘地“附身”在黑板与数学公式之间。
@@ -22,12 +20,13 @@
 Players will take on the role of a high school student facing college entrance exams or final challenges. Over the course of 7 "Calculus Lessons," you will interact with two heroines of contrasting personalities:
 - **Yun Xi**: A classical white-haired girl who mysteriously "possesses" the blackboard and mathematical formulas.
 - **Su Zhiwei**: A rigorous, bespectacled club president and calm, rational math prodigy.
-
+- 
 By solving problems, attending classes, and going on after-school dates, you will accumulate experience and affection points. Your choices and quiz performance will determine whether you branch into the Yun Xi route, the Club President route, or a neutral ending.
 
 ---
-
-## 🚀 快速开始与运行指南 / Quick Start & Running Guide
+![游戏截图](screenshot2.png)
+---
+##  快速开始与运行指南 / Quick Start & Running Guide
 
 ### 1. 安装 Ren'Py 引擎 / Install Ren'Py Engine
 本游戏基于 **Ren'Py 8.5.3** 开发。请根据你的操作系统下载并安装 SDK：
@@ -50,7 +49,7 @@ If you are using a packaged game version, simply click the project launcher in t
 
 ---
 
-## 📂 项目目录结构 / Project Directory Structure
+##  项目目录结构 / Project Directory Structure
 
 ```text
 galgame-math/
