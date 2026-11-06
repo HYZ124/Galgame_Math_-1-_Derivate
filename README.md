@@ -1,3 +1,25 @@
+##  快速开始与运行指南 / Quick Start & Running Guide
+
+### 1. 安装 Ren'Py 引擎 / Install Ren'Py Engine
+本游戏基于 **Ren'Py 8.5.3** 开发。请根据你的操作系统下载并安装 SDK：
+This game is developed based on **Ren'Py 8.5.3**. Please download and install the SDK according to your operating system:
+
+1. 前往 [Ren'Py 官方下载页面](https://www.renpy.org/latest.html)。 / Go to the [Ren'Py Official Download Page](https://www.renpy.org/latest.html).
+2. 下载适用于你系统（Windows / macOS / Linux）的 **Ren'Py SDK 8.x** 版本并解压安装。 / Download and extract the **Ren'Py SDK 8.x** version for your system (Windows / macOS / Linux).
+
+### 2. 运行游戏 / Running the Game
+有以下两种运行方式： / There are two ways to run the game:
+
+#### 方式 A：通过 Ren'Py SDK 启动（推荐） / Method A: Launch via Ren'Py SDK (Recommended)
+1. 打开 Ren'Py SDK 启动器。 / Open the Ren'Py SDK launcher.
+2. 点击 **“Preferences” -> “Projects Directory”**，将本项目的根目录 `galgame-math/` 所在的文件夹添加进来。 / Click **"Preferences" -> "Projects Directory"** and add the folder containing this project's root directory `galgame-math/`.
+3. 在左侧项目列表中选择 **`galgame-math`**，点击 **“Launch Project”（启动项目）** 即可。 / Select **`galgame-math`** from the project list on the left and click **"Launch Project"**.
+
+#### 方式 B：直接启动可执行文件 / Method B: Direct Executable Launch
+如果你使用的是打包好的游戏版本，直接点击 `/game/` 同级目录下的项目启动程序（或点击 `/game/` 内部的主脚本入口）即可运行。
+If you are using a packaged game version, simply click the project launcher in the same directory as `/game/` (or click the main script entry inside `/game/`) to run.
+
+---
 # 导数物语 (DERIVATIVE STORY)
 
 > **“在函数的极限处，遇见关于你的解。”**  
@@ -25,28 +47,6 @@ By solving problems, attending classes, and going on after-school dates, you wil
 
 ---
 ![游戏截图](screenshot2.png)
----
-##  快速开始与运行指南 / Quick Start & Running Guide
-
-### 1. 安装 Ren'Py 引擎 / Install Ren'Py Engine
-本游戏基于 **Ren'Py 8.5.3** 开发。请根据你的操作系统下载并安装 SDK：
-This game is developed based on **Ren'Py 8.5.3**. Please download and install the SDK according to your operating system:
-
-1. 前往 [Ren'Py 官方下载页面](https://www.renpy.org/latest.html)。 / Go to the [Ren'Py Official Download Page](https://www.renpy.org/latest.html).
-2. 下载适用于你系统（Windows / macOS / Linux）的 **Ren'Py SDK 8.x** 版本并解压安装。 / Download and extract the **Ren'Py SDK 8.x** version for your system (Windows / macOS / Linux).
-
-### 2. 运行游戏 / Running the Game
-有以下两种运行方式： / There are two ways to run the game:
-
-#### 方式 A：通过 Ren'Py SDK 启动（推荐） / Method A: Launch via Ren'Py SDK (Recommended)
-1. 打开 Ren'Py SDK 启动器。 / Open the Ren'Py SDK launcher.
-2. 点击 **“Preferences” -> “Projects Directory”**，将本项目的根目录 `galgame-math/` 所在的文件夹添加进来。 / Click **"Preferences" -> "Projects Directory"** and add the folder containing this project's root directory `galgame-math/`.
-3. 在左侧项目列表中选择 **`galgame-math`**，点击 **“Launch Project”（启动项目）** 即可。 / Select **`galgame-math`** from the project list on the left and click **"Launch Project"**.
-
-#### 方式 B：直接启动可执行文件 / Method B: Direct Executable Launch
-如果你使用的是打包好的游戏版本，直接点击 `/game/` 同级目录下的项目启动程序（或点击 `/game/` 内部的主脚本入口）即可运行。
-If you are using a packaged game version, simply click the project launcher in the same directory as `/game/` (or click the main script entry inside `/game/`) to run.
-
 ---
 
 ##  项目目录结构 / Project Directory Structure
