@@ -15,17 +15,21 @@
 #      用 `if persistent.wrong_ids:` 包住——没错过题的玩家看不到空壳。
 #      mode 必须传 "menu"：notebook 在 menu 模式下用不透明底色且不显示重做按钮
 #      （菜单上下文里没法 call drill_wrong，会把玩家踢出菜单）。
-#      加按钮前数一下总高：现在 9 个 ≈353px（gui.navigation_spacing=4），720 还放得下；
+#    - 新增「删除存档」按钮（只加在主菜单分支）：Confirm 确认后
+#      Function(wipe_all_saves) 删光全部 .save 并 persistent._clear(progress=True)
+#      重置一切（错题/相册/音乐开关全没），再 renpy.full_restart() 回全新主菜单。
+#      函数本体就在本文件 init python 块里（wipe_all_saves）。
+#      加按钮前数一下总高：现在 10 个 ≈392px（gui.navigation_spacing=4），720 还放得下；
 #      再加就改 hbox 分栏或者 viewport，别硬塞（README 坑 27）。
 #    - 其余按钮文案全部汉化成 _() 串（开始游戏/读取进度/系统设置/……）。
 #
-# 2) screen main_menu()  ← 封面动效的接入点，实现在 title_fx.rpy
-#    - 背景包进 `fixed: at fx_parallax(-0.018)` 并加 `at title_breathe`；
-#    - `use title_fx` = 视差装饰图层组；`use lang_switcher` = 左下角中/EN 按钮
-#      （i18n.rpy）；`fixed: at menu_slide` 包住 use navigation = osu 风滑入；
-#    - 版本号 vbox 上 `at fx_parallax(0.012)`，标题文字 `at title_float`。
-#    想再加一层视差：把内容包进 `fixed: at fx_parallax(depth)`，depth 正负
-#    决定与鼠标的反向位移，数值保持在 0.01~0.07，太大会露出画布边缘。
+# 2) screen main_menu()  ← 封面接入点（2026-11-06 起背景**静态化**）
+#    - 玩家嫌主菜单背景"动来动去"：title_fx / title_breathe / title_float /
+#      fx_parallax 全部停用，背景就是一张 `add gui.main_menu_background`。
+#    - 保留 `fixed: at menu_slide` 包住 use navigation（菜单入场一次性滑入，
+#      不循环）；`use lang_switcher` = 左下角中/EN 按钮（i18n.rpy）。
+#    - 想恢复动效：把这些 at 变换和 `use title_fx` 加回来即可，实现在
+#      title_fx.rpy（该文件已标注停用，代码都还在）。
 #
 # 3) screen preferences()
 #    - 「语言」vbox：中文 / English 两个按钮。`Language(...)` 之后必须再跟
@@ -372,6 +376,12 @@ screen navigation():
 
                 textbutton _("错题本") action ShowMenu("notebook", mode="menu")
 
+            # 完全重开（2026-11-06 加）：确认后删光存档、重置 persistent，
+            # 回到全新主菜单。只有主菜单给——游戏进行中想重开，先回主菜单。
+            textbutton _("删除存档") action Confirm(
+                _("删除全部存档、完全重新开始？所有进度和错题记录都会消失，无法撤销。"),
+                Function(wipe_all_saves))
+
         else:
 
             textbutton _("回想记录") action ShowMenu("history")
@@ -417,6 +427,22 @@ style navigation_button:
 style navigation_button_text:
     properties gui.text_properties("navigation_button")
 
+# 「删除存档」按钮的动作（2026-11-06 加）：
+# ① list_saved_games(fast=True) 拿到全部槽位文件名（含 auto/quick/_reload），逐个删；
+# ② persistent._clear(progress=True) 抹掉**所有** persistent 数据（错题本/相册解锁/
+#    音乐开关/进度缓存），等于全新安装；
+# ③ _clear 只清内存，full_restart(save=False) 不会把它写盘——必须先
+#    update(force_save=True) 强制落盘，否则重启后从磁盘读回旧 persistent，
+#    相册/错题本全"复活"（2026-11-06 探针实测踩到，见 _r19 探针逻辑）；
+# ④ renpy.full_restart() 重启回主菜单——不用 renpy.quit()，那会直接关掉游戏。
+init python:
+    def wipe_all_saves():
+        for _fn in renpy.list_saved_games(regexp=r".", fast=True):
+            renpy.unlink_save(_fn)
+        persistent._clear(progress=True)
+        renpy.persistent.update(force_save=True)
+        renpy.full_restart()
+
 
 ## Main Menu screen ############################################################
 ##
@@ -429,11 +455,10 @@ screen main_menu():
     ## This ensures that any other menu screen is replaced.
     tag menu
 
+    ## 背景静态化（2026-11-06）：原来的 title_breathe 呼吸缩放、fx_parallax
+    ## 鼠标视差和 title_fx 光斑/尘埃层已按玩家要求撤掉，只剩一张静态背景。
     fixed:
-        at fx_parallax(-0.018)
-        add gui.main_menu_background at title_breathe
-
-    use title_fx
+        add gui.main_menu_background
 
     ## This empty frame darkens the main menu.
     frame:
@@ -451,9 +476,8 @@ screen main_menu():
 
         vbox:
             style "main_menu_vbox"
-            at fx_parallax(0.012)
 
-            text "[config.name!t]" at title_float:
+            text "[config.name!t]":
                 style "main_menu_title"
 
             text "[config.version]":

@@ -166,3 +166,15 @@ translate english strings:
     old "还是不对——它继续留在错题本上。"
     new "Still not right — it stays in the mistake notebook."
 
+# TODO: Translation updated at 2026-11-06 11:59
+
+translate english strings:
+
+    # game/math_core.rpy:370
+    old "清空错题本"
+    new "Clear the notebook"
+
+    # game/math_core.rpy:370
+    old "要把错题本全部清空吗？所有记录都会被抹掉，无法撤销。"
+    new "Clear the whole mistake notebook? All records will be erased — this cannot be undone."
+

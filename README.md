@@ -55,13 +55,13 @@ If you are using a packaged game version, simply click the project launcher in t
 galgame-math/
 ├── game/                          ← 游戏核心逻辑与全部资源 / Core logic & all assets
 │   ├── script.rpy                 ← 主流程控制 (start -> prologue -> lesson1..7 -> finale -> epilogue)
-│   ├── math_core.rpy              ★ 做题引擎：题库切片、判题逻辑、MC/IN 答题界面、practice() / Quiz engine: question slicing, grading logic, UI, etc.
+│   ├── math_core.rpy              ★ 做题引擎：题库切片、判题逻辑、MC/IN 答题界面、practice()、错题本（含「清空错题本」入口） / Quiz engine: question slicing, grading logic, UI, wrong-answer notebook (with "Clear Notebook" button)
 │   ├── love.rpy                   ★ 恋爱系统：好感度管理 (love_yx/love_zw)、相册与 CG 回放 / Romance system: affection mgmt, gallery & CG replay
 │   ├── prelude.rpy                ← 每课前置小剧情与题型讲解 / Pre-lesson mini-stories & topic explanations
 │   ├── defines.rpy                ← 角色立绘定义、全局变量与好感度初始化 / Character sprite definitions, globals & affection init
 │   ├── options.rpy                ← 基础配置（分辨率、主菜单音乐、音量静音逻辑） / Basic config (resolution, BGM, volume/mute logic)
-│   ├── screens.rpy                ← UI 界面定义（主菜单、设置、答题 UI、静音开关） / UI definitions (main menu, settings, quiz UI, mute toggle)
-│   ├── title_fx.rpy               ← 主菜单 Visual 效果（鼠标视差、粒子浮尘等 ATL 变换） / Main menu visual effects (parallax, dust particles, ATL)
+│   ├── screens.rpy                ← UI 界面定义（主菜单、设置、答题 UI、静音开关、「删除存档」完全重开） / UI definitions (main menu, settings, quiz UI, mute toggle, "Delete Saves" full reset)
+│   ├── title_fx.rpy               ← 主菜单 Visual 效果（2026-11-06 起停用，背景已静态化；代码保留可恢复） / Main menu visual effects (disabled since 2026-11-06, static background; code kept for restore)
 │   ├── i18n.rpy                   ← 多语言国际化辅助 / Localization support
 │   ├── gui.rpy / guisupport.rpy   ← Ren'Py 默认 GUI 框架支持文件 / Ren'Py default GUI framework support files
 │   │

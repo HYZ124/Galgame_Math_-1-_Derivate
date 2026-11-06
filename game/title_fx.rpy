@@ -3,10 +3,12 @@
 # 软光斑缓慢漂移 + 鼠标视差分层 + 菜单滑入。
 # 旧版漂浮数学符号已移除。
 #
-# 【谁在用】screens.rpy 的 main_menu：`use title_fx`（光斑/尘埃层）、
-#   背景 `at title_breathe`、菜单 `at menu_slide`、版本号 `at title_float`。
-# 【想再加一层视差】把内容包进 `fixed: at fx_parallax(depth)`：depth 正负决定
-#   跟手还是逆手，绝对值越大位移越明显（现在用 0.012~0.018 这个量级）。
+# ⚠ 2026-11-06 起**全部停用**：玩家嫌主菜单背景"动来动去"，screens.rpy 的
+#   main_menu 已改成纯静态背景（不再 use title_fx，不再挂 title_breathe /
+#   fx_parallax / title_float）。本文件的变换都保留着没删，想恢复动效就把
+#   screens.rpy main_menu 里注释掉的 at 变换加回来（对照 git 历史即可）。
+#   唯一还在用的：menu_slide（主菜单入场一次性滑入，不循环）。
+#
 # 【引擎限制，别再踩】多个变换叠加只能嵌套 fixed，`at A + B` 在 8.5 不支持；
 #   ATL 里没有 while / $ / rotation 属性，循环动画用 function 语句 + repeat。
 # ============================================================
@@ -93,7 +95,7 @@ transform menu_slide:
     easeout 0.8 xoffset 0
     easein 0.55 alpha 1.0
 
-# 标题文字：悬浮 + 视差
+# 标题文字：悬浮 + 视差（已停用，见文件头）
 transform title_float:
     alpha 0.95
     parallel:
@@ -105,26 +107,6 @@ transform title_float:
         ease 2.6 yoffset 0
         repeat
 
-screen title_fx():
-    zorder 10
-    # 外层 fixed 只做鼠标视差，内层 add 做自身漂移（Ren'Py 不支持 at A + B 链式）
-    fixed:
-        at fx_parallax(0.050)
-        add "images/fx/blob_cyan.png" at fx_drift(0.78, 0.30, 0.05, 0.05, 11, 0.50, 1.5, 1.9)
-    fixed:
-        at fx_parallax(0.038)
-        add "images/fx/blob_amber.png" at fx_drift(0.16, 0.72, 0.06, 0.04, 14, 0.40, 1.7, 2.1)
-    fixed:
-        at fx_parallax(0.060)
-        add "images/fx/blob_teal.png" at fx_drift(0.62, 0.82, 0.04, 0.05, 12, 0.45, 1.3, 1.6)
-    fixed:
-        at fx_parallax(0.030)
-        add "images/fx/blob_blue.png" at fx_drift(0.30, 0.22, 0.05, 0.03, 16, 0.42, 1.9, 2.3)
-    fixed:
-        at fx_parallax(0.055)
-        add "images/fx/blob_pink.png" at fx_drift(0.90, 0.55, 0.03, 0.06, 13, 0.35, 1.1, 1.4)
-    # 漂浮小方块
-    fixed:
-        at fx_parallax(0.07)
-        for _i, (_x, _y, _d) in enumerate([(0.12, 0.35, 15), (0.45, 0.12, 18), (0.86, 0.78, 16), (0.55, 0.62, 20), (0.25, 0.88, 17)]):
-            add Solid("#dff2ff", xsize=14, ysize=14) at fx_dust(_x, _y, _d)
+# screen title_fx() 已于 2026-11-06 删除（背景静态化后无引用，留着会挂
+# audit 的 C_unused_screens）。要恢复动效：从 git 历史取回该 screen，
+# 并在 screens.rpy main_menu 里加回 `use title_fx` 与各 at 变换。

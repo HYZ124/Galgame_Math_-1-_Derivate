@@ -418,3 +418,15 @@ translate english strings:
     old "错题本"
     new "Mistake Notebook"
 
+# TODO: Translation updated at 2026-11-06 11:59
+
+translate english strings:
+
+    # game/screens.rpy:381
+    old "删除存档"
+    new "Delete Saves"
+
+    # game/screens.rpy:381
+    old "删除全部存档、完全重新开始？所有进度和错题记录都会消失，无法撤销。"
+    new "Delete all saves and start completely over? All progress and mistake records will be gone — this cannot be undone."
+

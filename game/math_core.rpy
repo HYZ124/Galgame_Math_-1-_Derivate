@@ -252,6 +252,15 @@ init 30 python:
         while pid in persistent.wrong_ids:
             persistent.wrong_ids.remove(pid)
 
+    # 一键清空（错题本界面「清空错题本」按钮用，2026-11-06 加）：
+    # 本局 wrong_list 原地清空；persistent.wrong_ids 用赋值触发脏标记，
+    # 再 update(force_save=True) 强制落盘——只抹错题记录，其他
+    # persistent 数据（相册解锁、音乐开关…）一概不动。
+    def wrong_clear_all():
+        wrong_list[:] = []
+        persistent.wrong_ids = []
+        renpy.persistent.update(force_save=True)
+
     def wrong_probs():
         _out = []
         for _pid in persistent.wrong_ids:
@@ -284,8 +293,8 @@ screen notebook(mode="game"):
     modal True
     tag notebook
     $ probs = wrong_probs()
-    # 课内叠在教室场景上→半透明（ee）能透出背景保持临场感；主菜单/游戏菜单是
-    # 动画封面（title_fx），透出来会打架，所以 mode="menu" 用不透明底色。
+    # 课内叠在教室场景上→半透明（ee）能透出背景保持临场感；主菜单/游戏菜单
+    # 背景是封面图，透出来会打架，所以 mode="menu" 用不透明底色。
     $ nb_bg = "#0b1712" if mode == "menu" else "#0b1712ee"
 
     add Solid(nb_bg)
@@ -354,6 +363,13 @@ screen notebook(mode="game"):
                 textbutton _("合上错题本") action Return("")
             else:
                 textbutton _("关闭") action Return()
+            # 清空入口（2026-11-06 加）：菜单里打开错题本也能一键抹掉全部记录。
+            # 用 Confirm 弹出确认，确认后 wrong_clear_all 清空并强制落盘；
+            # 下一轮屏幕重算 probs 变空，本按钮和导航里的「错题本」入口一起消失。
+            if probs:
+                textbutton _("清空错题本") action Confirm(
+                    _("要把错题本全部清空吗？所有记录都会被抹掉，无法撤销。"),
+                    Function(wrong_clear_all))
 
 # ------------------------------------------------------------
 # 错题重做：drill_mode 下不计分、不计入总题数，答对才划掉
